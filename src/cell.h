@@ -6,7 +6,6 @@ class Cell
 {
     public:
         Cell(float x, float y, sf::Texture flagTexture);
-
         void click();
         void flag();
         sf::RectangleShape shape;

@@ -1,4 +1,5 @@
 #include "main.h"
+#include "cell.h"
 
 int main() {
     sf::Texture flagTexture;
