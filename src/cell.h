@@ -6,12 +6,12 @@ class Cell
 {
     public:
         Cell(float x, float y, sf::Texture flagTexture);
-        void click();
-        void flag();
+        bool click();
+        bool flag();
         sf::RectangleShape shape;
-        const float size = 60;
 
     private:
+        const float size = 60;
         bool clicked;
         bool flagged;
         sf::Texture flagTexture;

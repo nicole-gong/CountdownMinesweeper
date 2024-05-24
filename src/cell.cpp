@@ -9,23 +9,28 @@ Cell::Cell(float x, float y, sf::Texture flagTexture) : flagTexture(flagTexture)
     shape.setOutlineThickness(-1);
 }
 
-void Cell::click()
+bool Cell::click()
 {
     if (!flagged)
-    {
-        clicked = true;
-        shape.setFillColor(sf::Color::Green);
-    }
+        if (!clicked) {
+            clicked = true;
+            shape.setFillColor(sf::Color::Green);
+            return true;
+        }
+    return false;
 }
 
-void Cell::flag()
+bool Cell::flag()
 {
     if (!clicked)
     {
         flagged = !flagged;
-        if (flagged)
+        if (flagged) {
             shape.setTexture(&flagTexture);
-        else
+            return true;
+        }
+        else 
             shape.setTexture(NULL);
     }
+    return false;
 }
