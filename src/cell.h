@@ -5,16 +5,22 @@
 class Cell
 {
     public:
-        Cell(float x, float y, sf::Texture flagTexture);
+        Cell(int x, int y, sf::Texture &flagTexture, sf::Font &font);
         bool click();
         bool flag();
+        void update();
         sf::RectangleShape shape;
+        int mineCount;
+        const int x_coord;
+        const int y_coord;
+        sf::Text mineText;
 
     private:
         const float size = 60;
         bool clicked;
         bool flagged;
-        sf::Texture flagTexture;
+        const sf::Texture flagTexture;
+        const sf::Font font;
     };
 
 #endif

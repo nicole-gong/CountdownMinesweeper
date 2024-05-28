@@ -29,7 +29,7 @@ public:
     }
 
 private:
-    sf::Time baseTime = sf::seconds(15);
+    sf::Time baseTime = sf::seconds(20);
     sf::Clock clock;
     sf::Time remainingTime;
     sf::Time timeLimit;
