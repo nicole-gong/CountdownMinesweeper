@@ -5,21 +5,18 @@
 int main() {
     int currFlags = 0;
     sf::Texture flagTexture;
-    if (!flagTexture.loadFromFile("C:\\Users\\nicol\\Personal Projects\\Minesweeper\\resources\\flag.png"))
+    if (!flagTexture.loadFromFile(absolutePath + "resources\\flag.png"))
         return -1;
 
     sf::Font font;
-    if (!font.loadFromFile("C:\\Users\\nicol\\Personal Projects\\Minesweeper\\resources\\Cascadia.ttf"))
+    if (!font.loadFromFile(absolutePath + "resources\\Consolas.ttf"))
         return -1;
     sf::Text text;
     text.setFont(font); 
     text.setCharacterSize(30);
     text.setFillColor(sf::Color::Black);
 
-    sf::Music music;
-    if (!music.openFromFile("C:\\Users\\nicol\\Personal Projects\\Minesweeper\\resources\\game_over.ogg"))
-        return -1;
-    bool game_alive = true;
+    bool gameAlive = true;
 
     Timer timer;
     auto window = sf::RenderWindow{ { 1920u, 1080u }, "Timed Minesweeper" };
@@ -37,7 +34,7 @@ int main() {
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            if (game_alive) {
+            if (gameAlive) {
                 if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
                 {
                     sf::Vector2f mousePos = window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
@@ -68,8 +65,7 @@ int main() {
 
         if (timer.getRemaining().asSeconds() < 0)
         {
-            game_alive = false;
-            music.play();
+            gameAlive = false;
             text.setString("My life is like a video game\n" 
                         "Trying hard to beat the stage\n"
                         "All while I am still collecting coins\n"
